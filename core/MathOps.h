@@ -16,7 +16,7 @@ class DLL_DECL MathOpGroup : public OpGroup
 {
 public:
 	MathOpGroup();
-	OPGROUP_INHERITED_DECLARATION(4);
+	OPGROUP_INHERITED_DECLARATION(5);
 };
 
 #define NEW_MATHOP(NAME, ARGS) class DLL_DECL NAME : public Op\
