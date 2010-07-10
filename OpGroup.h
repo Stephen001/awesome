@@ -8,8 +8,8 @@
 #ifndef OPGROUP_H_
 #define OPGROUP_H_
 
-#include "DLLProcess.h"
-#include "OpCode.h"
+#include <DLLProcess.h>
+#include <OpCode.h>
 
 #define GET_GROUP_CODE(OPCODE) ((OPCODE) >> 16)
 #define GET_OP_CODE(OPCODE) ((OPCODE) & 0x0000FFFF)

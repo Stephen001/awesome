@@ -8,7 +8,8 @@
 #ifndef OPCODE_H_
 #define OPCODE_H_
 
-#include "DLLProcess.h"
+#include <DLLProcess.h>
+#include <istream>
 
 struct Register;
 
@@ -18,6 +19,7 @@ public:
 	virtual void assign(Register * reg) {};
 	virtual void execute() {};
 	virtual inline unsigned short registers() { return 0; };
+	friend std::istream & operator>>(std::istream & is, Op & op);
 protected:
 	unsigned short _added;
 };

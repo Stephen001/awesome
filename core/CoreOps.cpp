@@ -5,7 +5,7 @@
  *      Author: Administrator
  */
 
-#include "CoreOps.h"
+#include <core/CoreOps.h>
 
 CoreOpGroup::CoreOpGroup() :  OpGroup("CoreOps", 0) {
 

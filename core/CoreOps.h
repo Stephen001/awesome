@@ -8,7 +8,7 @@
 #ifndef COREOPS_H_
 #define COREOPS_H_
 
-#include "../OpGroup.h"
+#include <OpGroup.h>
 
 class DLL_DECL CoreOpGroup: public OpGroup {
 public:

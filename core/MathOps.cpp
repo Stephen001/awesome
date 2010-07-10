@@ -5,7 +5,7 @@
  *      Author: Administrator
  */
 
-#include "MathOps.h"
+#include <core/MathOps.h>
 
 #define EXECUTE_BINARY(IMPL, OPERAND) void IMPL::execute() {\
 	RegisterType type = __registers.values[0]->state();\

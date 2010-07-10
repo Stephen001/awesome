@@ -8,7 +8,7 @@
 #ifndef REGISTER_H_
 #define REGISTER_H_
 
-#include "DLLProcess.h"
+#include <DLLProcess.h>
 
 enum RegisterType {
 	INTEGER, FLOATING_POINT

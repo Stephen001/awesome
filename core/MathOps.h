@@ -8,9 +8,9 @@
 #ifndef MATHOPS_H_
 #define MATHOPS_H_
 
-#include "../OpCode.h"
-#include "../Register.h"
-#include "../OpGroup.h"
+#include <OpCode.h>
+#include <Register.h>
+#include <OpGroup.h>
 
 class DLL_DECL MathOpGroup : public OpGroup
 {
