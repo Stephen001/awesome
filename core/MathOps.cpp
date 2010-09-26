@@ -7,53 +7,58 @@
 
 #include <core/MathOps.h>
 
-#define EXECUTE_BINARY(IMPL, OPERAND) void IMPL::execute() {\
-	RegisterType type = __registers.values[0]->state();\
-	int r1 = 0;\
+#define EXECUTE_BINARY(IMPL, OPERAND) void IMPL::execute( Register ** registers ) {\
+	RegisterType type = registers[0]->state();\
+	int r1    = 0;\
 	double r2 = 0;\
 	switch (type) {\
 		case INTEGER:\
-			r1 = __registers.values[1]->get<int>() +\
-				__registers.values[2]->get<int>();\
-			__registers.values[0]->set<int>(r1);\
+			r1 = registers[1]->get<int>() OPERAND\
+				 registers[2]->get<int>();\
+			registers[0]->set<int>(r1);\
 		break;\
 		case FLOATING_POINT:\
-			r2 = __registers.values[1]->get<double>() +\
-				__registers.values[2]->get<double>();\
-			__registers.values[0]->set<double>(r2);\
+			r2 = registers[1]->get<double>() OPERAND\
+				 registers[2]->get<double>();\
+			registers[0]->set<double>(r2);\
 		break;\
 	};\
 };
 
-#define EXECUTE_IN_PLACE(IMPL, OPERAND)  void IMPL::execute() {\
-	RegisterType type = __registers.values[0]->state();\
-	int r1 = 0;\
+#define EXECUTE_IN_PLACE(IMPL, OPERAND)  void IMPL::execute( Register ** registers ) {\
+	RegisterType type = registers[0]->state();\
+	int r1    = 0;\
 	double r2 = 0;\
 	switch (type) {\
 		case INTEGER:\
-			r1 = __registers.values[0]->get<int>() +\
-				__registers.values[1]->get<int>();\
-			__registers.values[0]->set<int>(r1);\
+			r1 = registers[0]->get<int>() OPERAND\
+				 registers[1]->get<int>();\
+			registers[0]->set<int>(r1);\
 		break;\
 		case FLOATING_POINT:\
-			r2 = __registers.values[0]->get<double>() +\
-				__registers.values[1]->get<double>();\
-			__registers.values[0]->set<double>(r2);\
+			r2 = registers[0]->get<double>() OPERAND\
+				 registers[1]->get<double>();\
+			registers[0]->set<double>(r2);\
 		break;\
 	};\
 };
 
-OPCODE_ASSIGN_DEFINITION(AssignOp, 3)
-OPCODE_ASSIGN_DEFINITION(AddOp, 3)
-OPCODE_ASSIGN_DEFINITION(AddInPlaceOp, 2)
-OPCODE_ASSIGN_DEFINITION(SubtractOp, 3)
-OPCODE_ASSIGN_DEFINITION(SubtractInPlaceOp, 2)
+void AssignOp::execute( Register ** registers ) {
+	switch (registers[0]->state()) {
+		case INTEGER:
+			registers[0]->set<int>(registers[1]->get<int>());
+		break;
 
-EXECUTE_IN_PLACE(AssignOp, =)
+		case FLOATING_POINT:
+			registers[0]->set<double>(registers[1]->get<double>());
+		break;
+	}
+};
+
 EXECUTE_BINARY(AddOp, +)
-EXECUTE_IN_PLACE(AddInPlaceOp, +=)
+EXECUTE_IN_PLACE(AddInPlaceOp, +)
 EXECUTE_BINARY(SubtractOp, -)
-EXECUTE_IN_PLACE(SubtractInPlaceOp, -=)
+EXECUTE_IN_PLACE(SubtractInPlaceOp, -)
 
 MathOpGroup::MathOpGroup() : OpGroup("MathOps", 1) {
 	OPGROUP_ASSIGN_OP(AssignOp,			 0);

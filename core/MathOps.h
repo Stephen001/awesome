@@ -19,16 +19,16 @@ public:
 	OPGROUP_INHERITED_DECLARATION(5);
 };
 
-#define NEW_MATHOP(NAME, ARGS) class DLL_DECL NAME : public Op\
+#define NEW_MATHOP(NAME) class DLL_DECL NAME : public Op\
 {\
-	OPCODE_INHERITED_DECLARATION(ARGS)\
+	void execute( Register ** registers );\
 };
 
-NEW_MATHOP(AssignOp, 2)
-NEW_MATHOP(AddOp, 3)
-NEW_MATHOP(AddInPlaceOp, 2)
-NEW_MATHOP(SubtractOp, 3)
-NEW_MATHOP(SubtractInPlaceOp, 2)
+NEW_MATHOP(AssignOp)
+NEW_MATHOP(AddOp)
+NEW_MATHOP(AddInPlaceOp)
+NEW_MATHOP(SubtractOp)
+NEW_MATHOP(SubtractInPlaceOp)
 
 #undef NEW_MATHOP
 
