@@ -24,6 +24,7 @@ public:
 class DLL_DECL ByteCode {
 public:
 	ByteCode();
+	ByteCode(const ByteCode & code);
 	virtual ~ByteCode();
 	ByteCodeContents * const contents();
 	void contents(ByteCodeContents * contents);

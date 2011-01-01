@@ -15,9 +15,12 @@ ByteCode::ByteCode() {
 	__contents = new ByteCodeContents();
 };
 
-ByteCode::~ByteCode() {
-	//delete __contents;
+ByteCode::ByteCode(const ByteCode & code) {
+	__contents = code.__contents;
+	__type	   = code.__type;
 };
+
+ByteCode::~ByteCode() {};
 
 ByteCodeContents * const ByteCode::contents() {
 	return __contents;
