@@ -15,12 +15,10 @@ struct Register;
 
 class DLL_DECL Op {
 public:
-	Op() : _added(0) {};
+	Op() {};
 	virtual void execute(Register ** regs) {};
 	virtual inline unsigned short registers() { return 0; };
 	friend std::istream & operator>>(std::istream & is, Op & op);
-protected:
-	unsigned short _added;
 };
 
 #define OPCODE_INHERITED_DECLARATION(SIZE) public:\

@@ -43,11 +43,22 @@
 	};\
 };
 
-EXECUTE_IN_PLACE(AssignOp, =)
+void AssignOp::execute( Register ** registers ) {
+	switch (registers[0]->state()) {
+		case INTEGER:
+			registers[0]->set<int>(registers[1]->get<int>());
+		break;
+
+		case FLOATING_POINT:
+			registers[0]->set<double>(registers[1]->get<double>());
+		break;
+	}
+};
+
 EXECUTE_BINARY(AddOp, +)
-EXECUTE_IN_PLACE(AddInPlaceOp, +=)
+EXECUTE_IN_PLACE(AddInPlaceOp, +)
 EXECUTE_BINARY(SubtractOp, -)
-EXECUTE_IN_PLACE(SubtractInPlaceOp, -=)
+EXECUTE_IN_PLACE(SubtractInPlaceOp, -)
 
 MathOpGroup::MathOpGroup() : OpGroup("MathOps", 1) {
 	OPGROUP_ASSIGN_OP(AssignOp,			 0);
