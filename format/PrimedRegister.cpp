@@ -18,10 +18,10 @@ void PrimedRegister::add(ByteCode & contents) {
 	__registers.push_back(contents);
 }
 
-unsigned int PrimedRegister::registers() {
-	return __op.registers();
+std::vector<ByteCode> & PrimedRegister::registers() {
+	return __registers;
 }
 
-ByteCode & PrimedRegister::get(int registerIndex) {
-	return __registers[registerIndex];
-};
+Op & PrimedRegister::op() {
+	return __op;
+}

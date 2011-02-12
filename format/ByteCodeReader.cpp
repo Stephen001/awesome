@@ -32,7 +32,7 @@ public:
 	};
 
 	bool isDone() {
-		return op != NULL && op->registers() == added;
+		return op != NULL && op->registers().size() == added;
 	};
 
 	void addOp(int code) {

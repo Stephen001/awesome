@@ -17,9 +17,8 @@ public:
 	PrimedRegister(unsigned int opcode);
 	virtual ~PrimedRegister();
 	void add(ByteCode & contents);
-	unsigned int registers();
-	ByteCode & get(int registerIndex);
-	Op & op() { return __op; };
+	std::vector<ByteCode> & registers();
+	Op & op();
 private:
 	Op & 				  __op;
 	std::vector<ByteCode> __registers;

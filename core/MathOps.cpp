@@ -7,7 +7,7 @@
 
 #include <core/MathOps.h>
 
-#define EXECUTE_BINARY(IMPL, OPERAND) void IMPL::execute(Register ** regs) {\
+#define EXECUTE_BINARY(IMPL, OPERAND) void IMPL::execute(std::vector<Register *> & regs) {\
 	RegisterType type = regs[0]->state();\
 	int r1 = 0;\
 	double r2 = 0;\
@@ -25,7 +25,7 @@
 	};\
 };
 
-#define EXECUTE_IN_PLACE(IMPL, OPERAND)  void IMPL::execute(Register ** regs) {\
+#define EXECUTE_IN_PLACE(IMPL, OPERAND)  void IMPL::execute(std::vector<Register *> & regs) {\
 	RegisterType type = regs[0]->state();\
 	int r1 = 0;\
 	double r2 = 0;\
@@ -43,7 +43,7 @@
 	};\
 };
 
-void AssignOp::execute( Register ** registers ) {
+void AssignOp::execute(std::vector<Register *> & registers) {
 	switch (registers[0]->state()) {
 		case INTEGER:
 			registers[0]->set<int>(registers[1]->get<int>());

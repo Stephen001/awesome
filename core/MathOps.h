@@ -21,7 +21,7 @@ public:
 
 #define NEW_MATHOP(NAME) class DLL_DECL NAME : public Op\
 {\
-	void execute( Register ** registers );\
+	void execute( std::vector<Register *> & registers );\
 };
 
 NEW_MATHOP(AssignOp)
