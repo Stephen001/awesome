@@ -10,6 +10,6 @@
 
 #include <core/MathOps.h>
 
-Op & get_op(unsigned int op);
+DLL_DECL Op & get_op(unsigned int op);
 
 #endif /* OPGROUPS_H_ */

@@ -12,7 +12,7 @@
 #include <format/ReadInstruction.h>
 #include <vector>
 
-class PrimedRegister {
+class DLL_DECL PrimedRegister {
 public:
 	PrimedRegister(unsigned int opcode);
 	virtual ~PrimedRegister();
