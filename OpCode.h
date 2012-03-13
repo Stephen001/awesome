@@ -17,6 +17,7 @@ struct Register;
 class DLL_DECL Op {
 public:
 	Op() {};
+	virtual ~Op() {};
 	virtual void execute(std::vector<Register *> & regs) {};
 	virtual inline unsigned short registers() { return 0; };
 	friend std::istream & operator>>(std::istream & is, Op & op);
