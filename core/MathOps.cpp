@@ -13,12 +13,12 @@
 	double r2 = 0;\
 	switch (type) {\
 		case INTEGER:\
-			r1 = regs[1]->get<int>() +\
+			r1 = regs[1]->get<int>() OPERAND\
 				 regs[2]->get<int>();\
 			regs[0]->set<int>(r1);\
 		break;\
 		case FLOATING_POINT:\
-			r2 = regs[1]->get<double>() +\
+			r2 = regs[1]->get<double>() OPERAND\
 				 regs[2]->get<double>();\
 			regs[0]->set<double>(r2);\
 		break;\
@@ -31,12 +31,12 @@
 	double r2 = 0;\
 	switch (type) {\
 		case INTEGER:\
-			r1 = regs[0]->get<int>() +\
+			r1 = regs[0]->get<int>() OPERAND\
 				 regs[1]->get<int>();\
 			regs[0]->set<int>(r1);\
 		break;\
 		case FLOATING_POINT:\
-			r2 = regs[0]->get<double>() +\
+			r2 = regs[0]->get<double>() OPERAND\
 				 regs[1]->get<double>();\
 			regs[0]->set<double>(r2);\
 		break;\
