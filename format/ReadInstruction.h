@@ -11,7 +11,7 @@
 #include <DLLProcess.h>
 #include <istream>
 
-DLL_DECL enum CodeType {
+enum CodeType {
 	OP, REGISTER, CONSTANT
 };
 
