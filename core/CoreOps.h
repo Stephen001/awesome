@@ -13,6 +13,7 @@
 class DLL_DECL CoreOpGroup: public OpGroup {
 public:
 	CoreOpGroup();
+	~CoreOpGroup();
 	OPGROUP_INHERITED_DECLARATION(1);
 };
 

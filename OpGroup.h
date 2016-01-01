@@ -17,6 +17,7 @@
 class DLL_DECL OpGroup {
 public:
 	OpGroup(const char * name, unsigned short code);
+	virtual ~OpGroup() {};
 	inline unsigned short code() { return __code; };
 	inline bool matches(unsigned int op) { return __code == GET_GROUP_CODE(op); };
 	inline const char * name() { return __name; };
@@ -33,6 +34,10 @@ private:
 	Op & get(unsigned int op);\
 private:\
 	Op * values[(SIZE)];
+
+#define OPGROUP_CLEAN_INHERITED_DECLARATION for (unsigned int i = 0; i < (sizeof(values) / sizeof(Op *)); i++) {\
+	delete values[i];\
+};
 
 #define OPGROUP_ASSIGN_OP(NAME, POSITION) values[POSITION] = new NAME();
 

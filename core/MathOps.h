@@ -16,6 +16,7 @@ class DLL_DECL MathOpGroup : public OpGroup
 {
 public:
 	MathOpGroup();
+	~MathOpGroup();
 	OPGROUP_INHERITED_DECLARATION(5);
 };
 

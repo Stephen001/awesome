@@ -68,4 +68,8 @@ MathOpGroup::MathOpGroup() : OpGroup("MathOps", 1) {
 	OPGROUP_ASSIGN_OP(SubtractInPlaceOp, 4);
 };
 
+MathOpGroup::~MathOpGroup() {
+	OPGROUP_CLEAN_INHERITED_DECLARATION
+}
+
 OPGROUP_GET_DEFINITION(MathOpGroup)
